@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome{% endblock %}
+{% block stylesheets %}  
+
+    
+        
+{% endblock %}
+        
+{% block body %}
+
+
+     
+    
+   
+    
+   
+   
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Contact Us</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
+            <!-- * * * * * * * * * * * * * * *-->
+            <!-- * * SB Forms Contact Form * *-->
+            <!-- * * * * * * * * * * * * * * *-->
+            <!-- This form is pre-integrated with SB Forms.-->
+            <!-- To make this form functional, sign up at-->
+            <!-- https://startbootstrap.com/solution/contact-forms-->
+            <!-- to get an API token!-->
+            
+            {{ form_start(form, {'attr': {'id': 'contactForm','name': 'My_form'}}) }}
+                <div class="row align-items-stretch mb-5">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <!-- Name input-->
+                            {{ form_widget(form.name ) }}
+                            <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                        </div>
+                        <div class="form-group">
+                            <!-- Email address input-->
+                            {{ form_widget(form.email) }}
+                            <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                        </div>
+                        <div class="form-group mb-md-0">
+                            <!-- Phone number input-->
+                            {{ form_widget(form.phone) }}
+                            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-textarea mb-md-0" onclick= "ClearFields()" >
+                                <!-- Message input-->
+                                {{ form_widget(form.message ) }}
+                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                    
+                </div>
+                {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                {{ message }}
+                  </div>
+               {% endfor %}
+                <!-- Submit success message-->
+                <!---->
+                <!-- This is what your users will see when the form-->
+                <!-- has successfully submitted-->
+                <div class="d-none" id="submitSuccessMessage">
+                    <div class="text-center text-white mb-3">
+                        <div class="fw-bolder">Form submission successful!</div>
+                        To activate this form, sign up at
+                        <br />
+                        <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                    </div>
+                </div>
+                <!-- Submit error message-->
+                <!---->
+                <!-- This is what your users will see when there is-->
+                <!-- an error submitting the form-->
+                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                <!-- Submit Button-->
+                <div class="text-center">{{ form_widget(form.send,{'attr': {'onclick': 'ClearFields()'}}) }} </div>
+                {{ form_end(form) }}
+        </div>
+        
+        {% for message in app.flashes('danger') %}
+              {{ message }}
+        {% endfor %}
+    </section>
+   
+{% include "footer.html.twig" %}
+
+    
+    
+    
+   
+    
+   
+    
+  
+       <script>
+
+            function ClearFields() {
+
+            document.getElementById("name1").value = "";
+            document.getElementById("email").value = "";
+            }
+
+       </script>
+       
+    </body>
+</html>
+
+
+{% endblock %}

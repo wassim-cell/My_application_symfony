@@ -1,0 +1,11 @@
+{% block title %}Hello !{% endblock %}
+
+{% block body %}
+{{ product.name  }}
+{{ product.message  }}
+{{ product.discription  }}
+<img src="{{ asset('uploades/') ~ product.imageFile }}">
+
+
+
+{% endblock %}
